@@ -1,5 +1,7 @@
 
-import './App.css';
+// import './App.css';
+import 'bulma/css/bulma.min.css';
+import './styles/globals.css'
 import Layout from './components/Layout'
 import ResourceHighlight from './components/ResourceHighlight'
 import ResourceList from './components/ResourceList'
