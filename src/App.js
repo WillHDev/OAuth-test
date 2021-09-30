@@ -63,13 +63,13 @@ function App( ) {
       <header className="App-header">
       <>
         <Layout>
-        {/* <ResourceHighlight */}
+         {/* <ResourceHighlight 
         
-        {/* />    */}
-        {/* <NewsLetter /> */}
-        {/* <ResourceList 
+         />   
+         <NewsLetter /> 
+         <ResourceList 
          
-        /> */}
+        />  */}
         <Footer />
         </Layout>
      </>
