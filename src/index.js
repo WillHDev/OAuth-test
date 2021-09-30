@@ -9,9 +9,22 @@ import {
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import New from "./components/New";
 
 ReactDOM.render(
-    <div> <App /></div>
+  <BrowserRouter>
+
+<Switch>
+          
+          <Route path="/resources/new">
+            <New />
+          </Route>
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>
+  
+    </BrowserRouter>
      ,
   
   document.getElementById('root')
