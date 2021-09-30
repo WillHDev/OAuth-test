@@ -49,7 +49,7 @@ class App extends React.Component {
     this.setState({ resources: data })
   }
   
-
+//
   render() {
     const { resources } = this.state;
     return (
