@@ -34,72 +34,121 @@ const data2 = [
 
 
 
-async function fetchResourcesJSON() {
-  const response = await fetch("http://localhost:8080/api/resources");
-  const resources = await response.json();
-  console.log(resources)
-  return resources;
-}
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {resources: []};
+  }
 
-function App( ) {
-  const [resources] = useState([]);
-
-  useEffect(() => {
-    // You need to restrict it at some point
-    // This is just dummy code and should be replaced by actual
-      const data = fetchResourcesJSON();
-      return data;
-  }, []);
-
- 
-  console.log(resources);
-
+  async componentDidMount() {
+    // GET request using fetch with async/await
+    const response = await fetch('http://localhost:8080/api/resources');
+    const data = await response.json();
+    //Probably needs to specify
+    // console.log(data);
+    this.setState({ resources: data })
+  }
   
-  
-  return (
-   
-    <div className="App">
+
+  render() {
+    const { resources } = this.state;
+    return (
+      <div className="App">
        
       <header className="App-header">
       <>
         <Layout>
-         {/* <ResourceHighlight 
-        
-         />   
+         <ResourceHighlight 
+            resources={resources.slice(2)}
+       />   
          <NewsLetter /> 
-         <ResourceList 
-         
-        />  */}
+        <ResourceList 
+            resources={resources.slice(0,2)}
+        /> 
         <Footer />
         </Layout>
      </>
       </header>
       
     </div>
-   
-  );
+    );
+  }
 }
 
 
 
 
 
-// export async function getServerSideProps() {
-//   //write async in front of the function where you would
-//   //like to resolve this data
+export default App;
 
-//   const resData = await fetch("http://localhost:8080/api/resources");
-//   //********* */
-  
-//   const data = await resData.json();
-//   //only appears in terminal
- 
-//      return {  props: {
-//        resources: data
-//      }
-//     }
+
+
+// async function fetchResourcesJSON() {
+//   const response = await fetch("http://localhost:8080/api/resources");
+//   const resources = await response.json();
+//   //console.log(resources)
+//   return resources;
 // }
 
-export default App;
-// resources={resources.slice(2)}
-// resources={resources.slice(0,2)}
+// function App( ) {
+//   const [, setResources, resources] = useState([]);
+
+//   useEffect(() => {
+//     // You need to restrict it at some point
+//     // This is just dummy code and should be replaced by actual
+//       const data = fetchResourcesJSON();
+//       return data;
+//   }, []);
+
+ 
+//   //console.log(resources);
+
+  
+  
+//   return (
+   
+//     <div className="App">
+       
+//       <header className="App-header">
+//       <>
+//         <Layout>
+//          <ResourceHighlight 
+//           resources={resources}
+//          />   
+//          {/* <NewsLetter /> 
+//          <ResourceList 
+         
+//         />  */}
+//         <Footer />
+//         </Layout>
+//      </>
+//       </header>
+      
+//     </div>
+   
+//   );
+// }
+
+
+
+
+
+// // export async function getServerSideProps() {
+// //   //write async in front of the function where you would
+// //   //like to resolve this data
+
+// //   const resData = await fetch("http://localhost:8080/api/resources");
+// //   //********* */
+  
+// //   const data = await resData.json();
+// //   //only appears in terminal
+ 
+// //      return {  props: {
+// //        resources: data
+// //      }
+// //     }
+// // }
+
+// export default App;
+// // resources={resources.slice(2)}
+// // resources={resources.slice(0,2)}

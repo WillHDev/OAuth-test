@@ -1,5 +1,5 @@
 const ResourceHighlight = ( { resources }  ) => {
-
+console.log(resources);
     return (
       <section className="hero ">
         <div className="hero-body">
