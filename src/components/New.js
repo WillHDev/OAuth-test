@@ -28,12 +28,31 @@ const New = () => {
 
     const submitForm = () => {
 
-        axios.post("/api/resources", form)
+       // axios.post("/api/resources", form)
         // fetch("/api/resources", {
         //   body: JSON.stringify(form),
         //   headers: {"Content-Type": "application/json"},
         //   method: "POST"
         // })
+       
+        //axios.post('http://localhost:8080/api/resources', form);
+
+        return fetch('http://localhost:8080/api/resources', {
+            method: 'POST',
+            body: JSON.stringify(form),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            if (response.status >= 200 && response.status < 300) {
+                return response;
+                console.log(response);
+                window.location.reload();
+              } else {
+               console.log('Somthing happened wrong');
+              }
+        }).catch(err => err);
+           // .then(response => this.setState({ articleId: response.data.id }));
       }
 
     const resetForm = () => setForm(DEFAULT_DATA);
