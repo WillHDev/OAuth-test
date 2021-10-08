@@ -11,7 +11,12 @@ import NewsLetter from './components/NewsLetter'
 import Footer from './components/Footer'
 import  LoginPage from './pages/LoginPage';
 import { auth } from './firebase/firebase.utils';
-
+import Dashboard from './pages/Dashboard';
+import {
+  Switch,
+  Route, 
+  Redirect
+}from 'react-router-dom'
 
 const data2 = [
   {
@@ -67,23 +72,11 @@ class App extends React.Component {
   }
 //
   render() {
-    const { resources } = this.state;
+  
     return (
       <div className="App">
        
-      <header className="App-header">
-        <Layout>
-         <ResourceHighlight 
-            resources={resources.slice(2)}
-       />   
-         <NewsLetter /> 
-        <ResourceList 
-            resources={resources.slice(0,2)}
-        /> 
-        <Footer />
-        </Layout>
-      </header>
-      <LoginPage />
+<Dashboard/>
     </div>
     );
   }
