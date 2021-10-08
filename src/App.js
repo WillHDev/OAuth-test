@@ -1,7 +1,10 @@
 
 // import './App.css';
 import React, { useState, useEffect } from 'react'
-import moduleName from 'module'
+import {
+  Route,
+  BrowserRouter as Routes
+} from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
 import './styles/globals.css'
 import Layout from './components/Layout'
@@ -12,11 +15,9 @@ import Footer from './components/Footer'
 import  LoginPage from './pages/LoginPage';
 import { auth } from './firebase/firebase.utils';
 import Dashboard from './pages/Dashboard';
-import {
-  Switch,
-  Route, 
-  Redirect
-}from 'react-router-dom'
+
+
+//
 
 const data2 = [
   {
@@ -63,6 +64,7 @@ class App extends React.Component {
     this.unSubscribeFromAuth = auth.onAuthStateChanged( user => {
       this.setState({ currentUser: user });
       console.log(user)
+      //
     });
   }
   
@@ -75,8 +77,13 @@ class App extends React.Component {
   
     return (
       <div className="App">
+            <Routes>
+            <Route path="/" >
+              <Dashboard />>
+              </Route>
+            </Routes>
        
-<Dashboard/>
+
     </div>
     );
   }
