@@ -9,6 +9,8 @@ import ResourceHighlight from './components/ResourceHighlight'
 import ResourceList from './components/ResourceList'
 import NewsLetter from './components/NewsLetter'
 import Footer from './components/Footer'
+import  LoginPage from './pages/LoginPage';
+import { auth } from './firebase/firebase.utils';
 
 
 const data2 = [
@@ -37,18 +39,32 @@ const data2 = [
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {resources: []};
+    this.state = {
+      resources: [],
+    currentUser: null
+    };
   }
 
+  unSubscribeFromAuth = null;
+
   async componentDidMount() {
+
     // GET request using fetch with async/await
     const response = await fetch('http://localhost:8080/api/resources');
     const data = await response.json();
     //Probably needs to specify
     // console.log(data);
-    this.setState({ resources: data })
+    this.setState({ resources: data });
+    this.unSubscribeFromAuth = auth.onAuthStateChanged( user => {
+      this.setState({ currentUser: user });
+      console.log(user)
+    });
   }
   
+  
+  componentWillUnmount() {
+    this.unSubscribeFromAuth();
+  }
 //
   render() {
     const { resources } = this.state;
@@ -56,7 +72,6 @@ class App extends React.Component {
       <div className="App">
        
       <header className="App-header">
-      <>
         <Layout>
          <ResourceHighlight 
             resources={resources.slice(2)}
@@ -67,9 +82,8 @@ class App extends React.Component {
         /> 
         <Footer />
         </Layout>
-     </>
       </header>
-      
+      <LoginPage />
     </div>
     );
   }
@@ -81,6 +95,25 @@ class App extends React.Component {
 
 export default App;
 
+
+// <BrowserRouter>
+
+// <Switch>
+// <Route exact path="/">
+//             <App />
+//           </Route>
+//           <Route  exact path="/auth">
+//             <LoginPage />
+//           </Route>
+//           <Route exact path="/resources/new">
+//             <New />
+//           </Route>
+    
+     
+         
+//         </Switch>
+  
+//     </BrowserRouter>
 
 
 // async function fetchResourcesJSON() {
