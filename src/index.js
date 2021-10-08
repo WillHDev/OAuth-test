@@ -10,25 +10,35 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import New from "./components/New";
+import  LoginPage from './pages/LoginPage';
 
 ReactDOM.render(
+  <React.StrictMode>
   <BrowserRouter>
 
 <Switch>
-          
-          <Route path="/resources/new">
-            <New />
-          </Route>
-          <Route path="/">
+<Route exact path="/">
             <App />
           </Route>
+          <Route  exact path="/auth">
+            <LoginPage />
+          </Route>
+          <Route exact path="/resources/new">
+            <New />
+          </Route>
+    
+     
+         
         </Switch>
   
     </BrowserRouter>
+    </React.StrictMode>
      ,
   
   document.getElementById('root')
 );
+
+//<Route  exact component={LoginPage}>
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
