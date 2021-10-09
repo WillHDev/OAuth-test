@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+
+import { useLocation } from 'react-router-dom'
+
 
 
 
@@ -12,51 +16,79 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
 
 
 
- class LoginPage extends React.Component {
+ //class LoginPage extends React.Component {
 
-  constructor(props) {
+  // constructor(props) {
 
-    super(props);
+  //   super(props);
 
 
 
-    this.state = {
+  //   this.state = {
 
-      email: '',
+  //     email: '',
 
-      password: ''
+  //     password: ''
 
-    };
+  //   };
+
+  // }
+  const LoginPage = () => { 
+const [ allValues, setAllValues ] = useState(
+  {
+
+    email: '',
+
+    password: ''
 
   }
+)
 
 
+const changeHandler = e => {
+  setAllValues({...allValues, [e.target.name]: e.target.value})
+}
 
-  handleSubmit = event => {
+ const handleSubmit = event => {
 
     event.preventDefault();
 
 
 
-    this.setState({ email: '', password: '' });
+    setAllValues({ email: '', password: '' });
 
   };
 
 
 
-  handleChange = event => {
+  // handleChange = event => {
 
-    const { value, name } = event.target;
-
-
-
-    this.setState({ [name]: value });
-
-  };
+  //   const { value, name } = event.target;
 
 
 
-  render() {
+  //   this.setState({ [name]: value });
+
+  // };
+
+//    navigate = useNavigate();
+// login  = useAuth().login;
+//   state  = useLocation().state;
+  
+//     handleSignin = () => {
+//       login().then(() => {
+//         navigate(state.path || "/");
+//       });
+//     };
+  
+
+
+
+
+
+//onSubmit={handleSubmit}
+
+  // render() {
 
     return (
 
@@ -68,7 +100,7 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
 
 
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
           <FormInput  
 
@@ -76,9 +108,9 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
 
             type='email'
 
-            handleChange={this.handleChange}
+            handleChange={changeHandler}
 
-            value={this.state.email}
+            value={allValues.email}
 
             label='email'
 
@@ -92,9 +124,9 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
 
             type='password'
 
-            value={this.state.password}
+            value={allValues.password}
 
-            handleChange={this.handleChange}
+            handleChange={changeHandler}
 
             label='password'
 
@@ -103,7 +135,11 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
           />
 
           <Button type='submit'> Sign in </Button>
-          <Button onClick={signInWithGoogle} isGoogleSignIn> Sign in with Google </Button>
+          <Button onClick={() => {
+            signInWithGoogle();
+           
+           }} 
+           isGoogleSignIn> Sign in with Google </Button>
         </form>
 
       </div>
@@ -112,7 +148,9 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
 
   }
 
-}
+//}
+
+
 
 export default LoginPage;
 

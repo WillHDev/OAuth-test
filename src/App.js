@@ -78,8 +78,11 @@ class App extends React.Component {
     return (
       <div className="App">
             <Routes>
-            <Route path="/" >
-              <Dashboard />>
+            <Route exact path="/" >
+              <Dashboard />
+              </Route>
+              <Route exact path="/auth" >
+              <LoginPage />
               </Route>
             </Routes>
        
