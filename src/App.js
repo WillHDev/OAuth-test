@@ -16,7 +16,7 @@ import Footer from './components/Footer'
 import  LoginPage from './pages/LoginPage';
 import { auth } from './firebase/firebase.utils';
 import Dashboard from './pages/Dashboard';
-
+import AddTask from './pages/AddTask'
 
 //
 
@@ -84,6 +84,9 @@ class App extends React.Component {
               </Route>
               <Route exact path="/auth" >
               <LoginPage />
+              </Route>
+              <Route exact path="/tasks/new" >
+              <AddTask />
               </Route>
             </Routes>
        
