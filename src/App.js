@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import {
   Route,
+  withRouter,
   BrowserRouter as Routes
 } from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
@@ -96,7 +97,7 @@ class App extends React.Component {
 
 
 
-export default App;
+export default withRouter(App);
 
 
 // <BrowserRouter>

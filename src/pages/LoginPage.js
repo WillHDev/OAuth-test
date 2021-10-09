@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 
 
-import { useLocation } from 'react-router-dom'
+//import { useLocation } from 'react-router-dom'
 
-
+import { useHistory,
+useEffect, useLocation,
+Redirect } from 'react-router-dom'
 
 
 import FormInput from '../shared/components/FormElements/FormInput';
@@ -33,8 +35,8 @@ import { signInWithGoogle } from '../firebase/firebase.utils'
   //   };
 
   // }
-  const LoginPage = () => { 
-const [ allValues, setAllValues ] = useState(
+  const LoginPage = (props) => { 
+const [ allValues, SetAllValues ] = useState(
   {
 
     email: '',
@@ -43,22 +45,37 @@ const [ allValues, setAllValues ] = useState(
 
   }
 )
-
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 const changeHandler = e => {
-  setAllValues({...allValues, [e.target.name]: e.target.value})
+  SetAllValues({...allValues, [e.target.name]: e.target.value})
 }
 
+
+//const navigate = useNavigate();
+// const { login } = useAuth();
+//const { state } = useLocation();
  const handleSubmit = event => {
 
     event.preventDefault();
+//TODO:add conditional to RD to auth if not logged in
 
 
-
-    setAllValues({ email: '', password: '' });
-
-  };
-
+    SetAllValues({ email: '', password: '' });
+  
+    //const history = useHistory();
+    //   let history= useHistory();
+    //  history.push("/" );
+    setIsLoggedIn(true);
+ }
+ if (isLoggedIn) {
+  return <Redirect to='/' />
+ }
+  // const handleLogin = () => {
+  //   login().then(() => {
+  //     navigate(state.path || "/dashboard");
+  //   });
+  // };
 
 
   // handleChange = event => {
