@@ -13,7 +13,7 @@ import  LoginPage from './pages/LoginPage';
 import { auth } from './firebase/firebase.utils';
 import Dashboard from './pages/Dashboard';
 import AddTask from './pages/AddTask'
-
+import TestPage from './pages/TestPage';
 //
 
 // const data2 = [
@@ -60,7 +60,7 @@ class App extends React.Component {
     this.setState({ resources: data });
     this.unSubscribeFromAuth = auth.onAuthStateChanged( user => {
       this.setState({ currentUser: user });
-      console.log(user)
+      //console.log(user)
       //
     });
   }
@@ -83,6 +83,9 @@ class App extends React.Component {
               </Route>
               <Route exact path="/tasks/new" >
               <AddTask />
+              </Route>
+              <Route exact path="/test" >
+              <TestPage />
               </Route>
             </Routes>
        

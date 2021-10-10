@@ -12,37 +12,29 @@ import Footer from '../components/Footer'
 
 
 
-{/* <textarea
-className="textarea" 
-placeholder="Textarea"  
-name="assignedTo" 
-value={form.assignedTo}
-onChange={handleChange}>
-</textarea> */}
 
 
 
-
-const data2 = [
-  {
-      id: "1",
-      title: "Learning Singleton Pattern",
-      description: "I would like to learn singleton in JS language because it's important for my job",
-      link: "https://link.com",
-      proiority: 3,
-      timeToFinish: 120,
-    status: "active"
-  },
-  {
-      id: "2",
-      title: "Resouce 2 Description",
-      description: "I would like to learn singleton in JS language because it's important for my job",
-      link: "https://link.com",
-      proiority: 2,
-      timeToFinish: 60,
-    status: "inactive"
-  }
-];
+// const data2 = [
+//   {
+//       id: "1",
+//       title: "Learning Singleton Pattern",
+//       description: "I would like to learn singleton in JS language because it's important for my job",
+//       link: "https://link.com",
+//       proiority: 3,
+//       timeToFinish: 120,
+//     status: "active"
+//   },
+//   {
+//       id: "2",
+//       title: "Resouce 2 Description",
+//       description: "I would like to learn singleton in JS language because it's important for my job",
+//       link: "https://link.com",
+//       proiority: 2,
+//       timeToFinish: 60,
+//     status: "inactive"
+//   }
+// ];
 
 
 

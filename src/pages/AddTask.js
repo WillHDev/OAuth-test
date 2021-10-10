@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // import Select from 'react-select'
-import {MultiSelect} from 'react-multi-select-component';
+//import {MultiSelect} from 'react-multi-select-component';
 // const options = [
 //   { value: 'chocolate', label: 'Chocolate' },
 //   { value: 'strawberry', label: 'Strawberry' },
@@ -11,18 +11,18 @@ import {MultiSelect} from 'react-multi-select-component';
 //: OptionsType = 
 
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+// const options = [
+//     { value: 'chocolate', label: 'Chocolate' },
+//     { value: 'strawberry', label: 'Strawberry' },
+//     { value: 'vanilla', label: 'Vanilla' }
+//   ]
 
-const users= [
-    { label: 'Joey', value: 'Joey', extra: 'extra' },
-    { label: 'Allistair', value: 'Allistair' },
-    { label: 'Gwen', value: 'Gwen' }
+// const users= [
+//     { label: 'Joey', value: 'Joey', extra: 'extra' },
+//     { label: 'Allistair', value: 'Allistair' },
+//     { label: 'Gwen', value: 'Gwen' }
    
-  ];
+//   ];
 
  
 
@@ -46,18 +46,18 @@ const handleChange = (e) =>{
 }
 
 
-const handleMultiSelectChange = (selected) =>{
-   // const  { value }  = e.target;
+// const handleMultiSelectChange = (selected) =>{
+//    // const  { value }  = e.target;
         
-        const assignedTo1 = selected;
-        //JSON.stringify(selected);
-        console.log(assignedTo1);
-        setForm({ 
-            ...form,
-            assignedTo: assignedTo1
-         });
-         console.log("multiChange" + form.assignedTo);
-}
+//         const assignedTo1 = selected;
+//         //JSON.stringify(selected);
+//         console.log(assignedTo1);
+//         setForm({ 
+//             ...form,
+//             assignedTo: assignedTo1
+//          });
+//          console.log("multiChange" + form.assignedTo);
+// }
 
 // const handleSubmit = (e) => {
 //     e.preventDefault();
@@ -193,12 +193,3 @@ const Joey = "Joey";
 
 export default AddTask;
 
-{/* <div className="control">
-                    <textarea
-                     className="textarea" 
-                     placeholder="Textarea"  
-                     name="tags" 
-                     value={form.tags}
-                     onChange={handleChange}>
-                     </textarea>
-                </div> */}

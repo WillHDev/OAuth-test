@@ -14,7 +14,7 @@ const Newsletter = () => {
                           <input className="input " type="text" placeholder="Email address" />
                         </div>
                         <div className="control">
-                          <a className="button is-info">
+                          <a className="button is-info" href="/">
                             Subscribe
                           </a>
                         </div>

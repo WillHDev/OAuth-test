@@ -10,7 +10,7 @@ const Navbar = () => {
         <div className="container">
           <div className="navbar-brand">
           {/* <Link to="/"> */}
-          <a className="navbar-item" >
+          <a className="navbar-item" href="/">
               <h1>Content Manager</h1>
             </a>
               {/* </Link> */}
@@ -31,18 +31,18 @@ const Navbar = () => {
                 </div>
               </div>
               {/* <Link to="/"> */}
-              <a className="navbar-item is-active is-size-5 has-text-weight-semibold">
+              <a className="navbar-item is-active is-size-5 has-text-weight-semibold" href="/">
                 Home
               </a>
               {/* </Link> */}
 
               {/* <Link to="/resources/new"> */}
               <a
-                  className="navbar-item is-size-5 has-text-weight-semibold">
+                  className="navbar-item is-size-5 has-text-weight-semibold" href="/tasks/new">
                 Add
               </a>
               {/* </Link> */}
-              <a className="navbar-item is-size-5 has-text-weight-semibold">
+              <a className="navbar-item is-size-5 has-text-weight-semibold" href="/">
                 Features
               </a>
             </div>
