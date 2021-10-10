@@ -1,6 +1,6 @@
 
 // import './App.css';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   Route,
   withRouter,
@@ -8,11 +8,7 @@ import {
 } from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
 import './styles/globals.css'
-import Layout from './components/Layout'
-import ResourceHighlight from './components/ResourceHighlight'
-import ResourceList from './components/ResourceList'
-import NewsLetter from './components/NewsLetter'
-import Footer from './components/Footer'
+
 import  LoginPage from './pages/LoginPage';
 import { auth } from './firebase/firebase.utils';
 import Dashboard from './pages/Dashboard';
@@ -20,26 +16,26 @@ import AddTask from './pages/AddTask'
 
 //
 
-const data2 = [
-  {
-      id: "1",
-      title: "Learning Singleton Pattern",
-      description: "I would like to learn singleton in JS language because it's important for my job",
-      link: "https://link.com",
-      proiority: 3,
-      timeToFinish: 120,
-    status: "active"
-  },
-  {
-      id: "2",
-      title: "Resouce 2 Description",
-      description: "I would like to learn singleton in JS language because it's important for my job",
-      link: "https://link.com",
-      proiority: 2,
-      timeToFinish: 60,
-    status: "inactive"
-  }
-];
+// const data2 = [
+//   {
+//       id: "1",
+//       title: "Learning Singleton Pattern",
+//       description: "I would like to learn singleton in JS language because it's important for my job",
+//       link: "https://link.com",
+//       proiority: 3,
+//       timeToFinish: 120,
+//     status: "active"
+//   },
+//   {
+//       id: "2",
+//       title: "Resouce 2 Description",
+//       description: "I would like to learn singleton in JS language because it's important for my job",
+//       link: "https://link.com",
+//       proiority: 2,
+//       timeToFinish: 60,
+//     status: "inactive"
+//   }
+// ];
 
 
 

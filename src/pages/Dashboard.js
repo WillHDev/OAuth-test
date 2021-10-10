@@ -1,6 +1,6 @@
 
 // import './Dashboard.css';
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import 'bulma/css/bulma.min.css';
 import '../styles/globals.css'
 import Layout from '../components/Layout'

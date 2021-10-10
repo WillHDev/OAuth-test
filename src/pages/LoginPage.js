@@ -3,8 +3,7 @@ import React, {useState} from 'react';
 
 //import { useLocation } from 'react-router-dom'
 
-import { useHistory,
-useEffect, useLocation,
+import { 
 Redirect } from 'react-router-dom'
 
 

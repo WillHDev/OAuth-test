@@ -1,84 +1,134 @@
-import MultiSelect from "react-multi-select-component";
-import Select from '@atlaskit/select';
+import { useState } from 'react';
+// import Select from 'react-select'
+import {MultiSelect} from 'react-multi-select-component';
+// const options = [
+//   { value: 'chocolate', label: 'Chocolate' },
+//   { value: 'strawberry', label: 'Strawberry' },
+//   { value: 'vanilla', label: 'Vanilla' }
+// ]
+
 
 //: OptionsType = 
 
 
+const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
 
-const cities= [
-    { label: 'Adelaide', value: 'adelaide', extra: 'extra' },
-    { label: 'Brisbane', value: 'brisbane' },
-    { label: 'Canberra', value: 'canberra' },
-    { label: 'Darwin', value: 'darwin' },
-    { label: 'Hobart', value: 'hobart' },
-    { label: 'Melbourne', value: 'melbourne' },
-    { label: 'Perth', value: 'perth' },
-    { label: 'Sydney', value: 'sydney' },
+const users= [
+    { label: 'Joey', value: 'Joey', extra: 'extra' },
+    { label: 'Allistair', value: 'Allistair' },
+    { label: 'Gwen', value: 'Gwen' }
+   
   ];
+
+ 
+
 const AddTask = () => {
 
+const [ form, setForm ] = useState({
+    title: "",
+    description: "",
+    assignedTo: []
+});
 
+const handleChange = (e) =>{
+    const { name, value }  = e.target;
+        
+        setForm({ 
+            ...form,
+            [name]: value
+         });
+         console.log("form" + form);
+}
+
+
+const handleMultiSelectChange = (selected) =>{
+   // const  { value }  = e.target;
+        
+        const assignedTo1 = selected;
+        //JSON.stringify(selected);
+        console.log(assignedTo1);
+        setForm({ 
+            ...form,
+            assignedTo: assignedTo1
+         });
+         console.log("multiChange" + form.assignedTo);
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const assignedTo1 = JSON.stringify(form.assignedTo);
+    //JSON.stringify(selected);
+    console.log(assignedTo1);
+    setForm({ 
+        ...form,
+        assignedTo: assignedTo1
+     });
+console.log("Submit" + form);
+}
+//const multiValue =[];
     return (
 
-        <><div className="field">
+        <><h1 className="label">New Task</h1><div className="field">
             <label className="label">Task</label>
             <div className="control">
-                <input className="input" type="text" placeholder="Text input" />
+                <input 
+                className="input" 
+                type="text" 
+                placeholder="Text input"
+                name="title" 
+                value={form.title}
+                onChange={handleChange}/>
             </div>
             <div className="field">
                 <label className="label">Description</label>
                 <div className="control">
-                    <textarea className="textarea" placeholder="Textarea"></textarea>
+                    <textarea
+                     className="textarea" 
+                     placeholder="Textarea"  
+                     name="description" 
+                     value={form.description}
+                     onChange={handleChange}>
+                     </textarea>
                 </div>
             </div>
         </div><div className="field">
-                <label className="label"></label>
+                <label className="label">Assign to:</label>
                 <div className="control has-icons-left has-icons-right">
-                    <input className="input is-success" type="text" placeholder="Text input" value="bulma" />
+                    
+                <MultiSelect
+        options={options}
+       value={form.assignedTo}
+        onChange={handleMultiSelectChange}
+        labelledBy="Select"
+      />
+                {/* <Select
+                value={form.assignedTo}
+                onChange={handleMultiSelectChange}
+                 options={options} /> */}
+                {/* <Select
+                     name="assignedTo"
+                    inputId="multi-select-example"
+                    className="multi-select"
+                    classNamePrefix="react-select"
+                    options={users}
+                    isMulti
+                    isSearchable={false}
+                    placeholder=""
+                    value={form.assignedTo}
+                    onChange={handleMultiSelectChange}
+                    /> */}
                 </div>
-                <p className="help is-success">This username is available</p>
-            </div><div className="field">
-                <label className="label">Email</label>
-                <div className="control has-icons-left has-icons-right">
-                <Select
-      inputId="multi-select-example"
-      className="multi-select"
-      classNamePrefix="react-select"
-      options={cities}
-      isMulti
-      isSearchable={false}
-      placeholder="Choose a city"
-    />
-                </div>
-                <p className="help is-danger">This email is invalid</p>
-            </div><div className="field">
-                <label className="label">Subject</label>
-                <div className="control">
-                    <div className="select">
-                        <select>
-                            <option>Select dropdown</option>
-                            <option>With options</option>
-                        </select>
-                    </div>
-                </div>
-            </div><div className="field">
-                <div className="control">
-                    <label className="checkbox">
-                        <input type="checkbox" />
-                    </label>
-                </div>
-            </div><div className="field">
-                <div className="control">
-                    <label className="radio">
-                        <input type="radio" name="question" />
-                    </label>
-                    <label className="radio">
-                        <input type="radio" name="question" />
-                    </label>
-                </div>
+               
             </div><div className="field is-grouped">
                 <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button onClick={handleSubmit}
+                    className="button is-link"
+                    >Submit</button>
                 </div>
                 <div className="control">
                     <button className="button is-link is-light">Cancel</button>
