@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import Select from 'react-select'
 
-
+import MultiSelect from './MultiSelect';
 //: OptionsType = 
 
 
@@ -28,6 +28,23 @@ const [ form, setForm ] = useState({
     tags: [],
     assignedTo: []
 });
+
+const [form2, setForm2] = useState({
+    assignedTo:[]
+});
+
+
+const handleChange2 = (value) =>{
+    //const { name, value }  = e.target;
+        
+        setForm({ 
+            ...form2,
+            assignedTo: value
+         });
+         console.log(form2);
+}
+
+
 
 const handleChange = (e) =>{
     const { name, value }  = e.target;
@@ -130,23 +147,20 @@ const Joey = "Joey";
                 <label className="label">Assign to:</label>
                 <div className="control has-icons-left has-icons-right">
                 <label className="checkbox">
-  <input
-   type="checkbox"
-   name="description" 
-   value={form.assignedTo}
-   onChange={handleChange}
-/>
-  {Joey}
+ <MultiSelect 
+ value={form2.assignedTo}
+ onChange={handleChange2}/>
+  Assign To
 </label>
 <br/>
 <br/>
-                <textarea
+                {/* <textarea
                      className="textarea" 
                      placeholder="Textarea"  
                      name="assignedTo" 
                      value={form.assignedTo}
                      onChange={handleChange}>
-                     </textarea>
+                     </textarea> */}
                      
                 {/* <MultiSelect
         options={options}
