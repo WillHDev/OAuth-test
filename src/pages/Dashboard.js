@@ -11,6 +11,18 @@ import Footer from '../components/Footer'
 
 
 
+
+{/* <textarea
+className="textarea" 
+placeholder="Textarea"  
+name="assignedTo" 
+value={form.assignedTo}
+onChange={handleChange}>
+</textarea> */}
+
+
+
+
 const data2 = [
   {
       id: "1",

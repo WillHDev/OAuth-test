@@ -31,6 +31,7 @@ const AddTask = () => {
 const [ form, setForm ] = useState({
     title: "",
     description: "",
+    tags: [],
     assignedTo: []
 });
 
@@ -58,18 +59,48 @@ const handleMultiSelectChange = (selected) =>{
          console.log("multiChange" + form.assignedTo);
 }
 
-const handleSubmit = (e) => {
-    e.preventDefault();
+// const handleSubmit = (e) => {
+//     e.preventDefault();
 
-    const assignedTo1 = JSON.stringify(form.assignedTo);
-    //JSON.stringify(selected);
-    console.log(assignedTo1);
-    setForm({ 
-        ...form,
-        assignedTo: assignedTo1
-     });
-console.log("Submit" + form);
-}
+//     const assignedTo1 = JSON.stringify(form.assignedTo);
+//     //JSON.stringify(selected);
+//     console.log(assignedTo1);
+//     setForm({ 
+//         ...form,
+//         assignedTo: assignedTo1
+//      });
+// console.log( form);
+// }
+const submitForm = () => {
+
+    // axios.post("/api/resources", form)
+     // fetch("/api/resources", {
+     //   body: JSON.stringify(form),
+     //   headers: {"Content-Type": "application/json"},
+     //   method: "POST"
+     // })
+    
+     //axios.post('http://localhost:8080/api/resources', form);
+console.log(form);
+     return fetch('http://localhost:8080/api/resources', {
+         method: 'POST',
+         body: JSON.stringify(form),
+         headers: {
+             'Content-Type': 'application/json'
+         }
+     }).then(response => {
+         if (response.status >= 200 && response.status < 300) {
+             return response;
+             // console.log(response);
+             // window.location.reload();
+           } else {
+            console.log('Somthing happened wrong');
+           }
+     }).catch(err => err);
+        // .then(response => this.setState({ articleId: response.data.id }));
+   }
+const Joey = "Joey";
+  
 //const multiValue =[];
     return (
 
@@ -84,6 +115,7 @@ console.log("Submit" + form);
                 value={form.title}
                 onChange={handleChange}/>
             </div>
+            </div>
             <div className="field">
                 <label className="label">Description</label>
                 <div className="control">
@@ -96,16 +128,38 @@ console.log("Submit" + form);
                      </textarea>
                 </div>
             </div>
-        </div><div className="field">
+            <div className="field">
+                <label className="label">Tags</label>
+                
+            </div>
+       <div className="field">
                 <label className="label">Assign to:</label>
                 <div className="control has-icons-left has-icons-right">
-                    
-                <MultiSelect
+                <label className="checkbox">
+  <input
+   type="checkbox"
+   name="description" 
+   value={form.assignedTo}
+   onChange={handleChange}
+/>
+  {Joey}
+</label>
+<br/>
+<br/>
+                <textarea
+                     className="textarea" 
+                     placeholder="Textarea"  
+                     name="assignedTo" 
+                     value={form.assignedTo}
+                     onChange={handleChange}>
+                     </textarea>
+                     
+                {/* <MultiSelect
         options={options}
        value={form.assignedTo}
         onChange={handleMultiSelectChange}
         labelledBy="Select"
-      />
+      /> */}
                 {/* <Select
                 value={form.assignedTo}
                 onChange={handleMultiSelectChange}
@@ -126,7 +180,7 @@ console.log("Submit" + form);
                
             </div><div className="field is-grouped">
                 <div className="control">
-                    <button onClick={handleSubmit}
+                    <button onClick={submitForm}
                     className="button is-link"
                     >Submit</button>
                 </div>
@@ -138,3 +192,13 @@ console.log("Submit" + form);
 }
 
 export default AddTask;
+
+{/* <div className="control">
+                    <textarea
+                     className="textarea" 
+                     placeholder="Textarea"  
+                     name="tags" 
+                     value={form.tags}
+                     onChange={handleChange}>
+                     </textarea>
+                </div> */}
