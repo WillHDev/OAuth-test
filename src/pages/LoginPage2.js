@@ -1,10 +1,20 @@
 import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap';
+import { useAuth } from '../contexts/Auth-Context';
+
 export default function LoginPage2() {
     
-    const emailRef =  useRef();
+const emailRef =  useRef();
 const passwordRef = useRef();
 const passwordConfirmRef = useRef();
+//WHY is signup destructured
+const { signUp } = useAuth();
+
+//WHY isnt this an arrow function?
+function handleSubmit (e)  {
+    e.preventDefault();
+    signUp(emailRef.current.value, passwordRef.current.value)
+}
 
     return (
         <>
@@ -27,7 +37,7 @@ const passwordConfirmRef = useRef();
                                 <Form.Control type="password" ref= {passwordConfirmRef} required />
                             </Form.Label>
                         </Form.Group>
-                        <Button className="w-100" type="submit" >Sign Up</Button>
+                        <Button  type="submit" >Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>
