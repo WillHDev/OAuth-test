@@ -9,11 +9,12 @@ import {
 import 'bulma/css/bulma.min.css';
 import './styles/globals.css'
 
-import  LoginPage from './pages/LoginPage';
+import  LoginPage2 from './pages/LoginPage2';
 import { auth } from './firebase/firebase.utils';
 import Dashboard from './pages/Dashboard';
 import AddTask from './pages/AddTask'
 import TestPage from './pages/TestPage';
+import 'bootstrap/dist/css/bootstrap.min.css'
 //
 
 // const data2 = [
@@ -79,7 +80,7 @@ class App extends React.Component {
               <Dashboard />
               </Route>
               <Route exact path="/auth" >
-              <LoginPage />
+              <LoginPage2 />
               </Route>
               <Route exact path="/tasks/new" >
               <AddTask />

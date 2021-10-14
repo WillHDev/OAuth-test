@@ -29,7 +29,7 @@ const [ form, setForm ] = useState({
     assignedTo: []
 });
 
-const [form2, setForm2] = useState({
+const [form2] = useState({
     assignedTo:[]
 });
 
@@ -110,7 +110,7 @@ console.log(form);
      }).catch(err => err);
         // .then(response => this.setState({ articleId: response.data.id }));
    }
-const Joey = "Joey";
+
   
 //const multiValue =[];
     return (

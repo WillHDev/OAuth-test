@@ -3,19 +3,19 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
-const config = 
-{
+const config = {
   apiKey: "AIzaSyA36aZma2YbwFTNGeiDllFmEt10oRJA_BY",
   authDomain: "crwn-db-aad76.firebaseapp.com",
   projectId: "crwn-db-aad76",
   storageBucket: "crwn-db-aad76.appspot.com",
   messagingSenderId: "568868012117",
-  appId: "1:568868012117:web:69989acf3a020a3825d4dc",
-  measurementId: "G-QMXCRW7H4Z"
-  };
+  appId: "1:568868012117:web:4aff54a6bb2cd97325d4dc",
+  measurementId: "G-ZPH39QXMJ7"
+};
 
   firebase.initializeApp(config);
 
+//exports our auth instance
   export const auth = firebase.auth();
 
   export const firestore = firebase.firestore();

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 import makeAnimated from "react-select/animated";
 import { colourOptions } from "./data.js";
