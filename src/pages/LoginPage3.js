@@ -1,15 +1,17 @@
 import React, { useRef, useState } from 'react'
-import { Form, Button, Card } from 'react-bootstrap';
+import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/Auth-Context';
 
-export default function LoginPage2() {
+export default function LoginPage3() {
     
 const emailRef =  useRef();
 const passwordRef = useRef();
 const passwordConfirmRef = useRef();
 //WHY is signup destructured
-const { signUp } = useAuth();
+//currenUser used for testing from useAuth
+const { signUp} = useAuth();
 const [ error, setError ] = useState();
+const [ loading, setLoading ] = useState(false);
 
 
 //WHY isnt this an arrow function?
@@ -20,19 +22,21 @@ async function handleSubmit (e)  {
     }
     try {
         setError('');
+        setLoading(true);
         await signUp(emailRef.current.value, passwordRef.current.value);
     } catch {
         setError('Failed to create an account')
     }
-
+setLoading(false);
 }
 
     return (
         <>
             <Card>
                 <Card.Body>
-                    <h2 className="text-center mb-4">Sign Up</h2>
-                    <Form>
+                    <h2 className="text-center mb-4">Log In</h2>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    <Form  onSubmit={handleSubmit}>
                         <Form.Group id="email">
                             <Form.Label>Email
                                 <Form.Control type="email" ref= {emailRef} required />
@@ -48,7 +52,7 @@ async function handleSubmit (e)  {
                                 <Form.Control type="password" ref= {passwordConfirmRef} required />
                             </Form.Label>
                         </Form.Group>
-                        <Button  type="submit" >Sign Up</Button>
+                        <Button  type="submit" disabled={loading}>Sign Up</Button>
                     </Form>
                 </Card.Body>
             </Card>

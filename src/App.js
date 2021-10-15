@@ -4,11 +4,13 @@ import React from 'react'
 import {
   Route,
   withRouter,
-  BrowserRouter as Routes
+  BrowserRouter as Routes,
+  Switch
 } from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
 import './styles/globals.css'
-import  LoginPage2 from './pages/LoginPage2';
+import  SignUpPage from './pages/SignUpPage';
+import LoginPage3 from './pages/LoginPage3';
 import Dashboard from './pages/Dashboard';
 import AddTask from './pages/AddTask'
 import TestPage from './pages/TestPage';
@@ -82,33 +84,41 @@ class App extends React.Component {
   
     return (
       <div className="App">
-        <AuthProvider>
+     
             <Routes>
+            <AuthProvider>
+              <Switch>
             <Route exact path="/" >
               <Dashboard />
               </Route>
 
-              <Route exact path="/auth" >
+              <Route exact path="/signup" >
                 <Container className="d-flex align-items-center
                 justify-content-center" 
                 style={{ minHeight: "100vh" }}>
                   <div className="w-100"
                   style={{  maxWidth: "400px" 
                 }}>
-                <LoginPage2 />
+                < SignUpPage />
                 </div>
                 </Container>
-        
+                </Route>
+
+              <Route exact path="/login" >
+              <LoginPage3/>
               </Route>
+
               <Route exact path="/tasks/new" >
               <AddTask />
               </Route>
               <Route exact path="/test" >
               <TestPage />
               </Route>
+              </Switch>
+              </AuthProvider>
             </Routes>
        
-            </AuthProvider>
+           
     </div>
     );
   }

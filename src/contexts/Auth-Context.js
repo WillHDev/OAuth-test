@@ -14,6 +14,7 @@ export function useAuth() {
 
 export  function AuthProvider( { children } ) {
 const [ currentUser, setCurrentUser ] = useState();
+const [ loading, setLoading ] = useState(true);
 
 function signup(email, password) {
     //will return a promise that we can use inside Signup component
@@ -25,8 +26,13 @@ function signup(email, password) {
 useEffect(() => {
     //onAuthStateChanged returns a method that when we call the method
     //it will unsubscribe this onAuthStateChanged event
+
+    //currentUse starts out as null and then sets itself
+    //
 const unsubscribe = auth.onAuthStateChanged(user => {
     setCurrentUser(user);
+    setLoading(false);
+   
 });
 //going to unsubscribe us from the onAuthChanged listener whenever we 
 //unmount this component
@@ -40,7 +46,7 @@ return unsubscribe;
     }
     return (
     <AuthContext.Provider value={value}>
-        {children}
+        {!loading && children}
     </AuthContext.Provider>
     )
 }
