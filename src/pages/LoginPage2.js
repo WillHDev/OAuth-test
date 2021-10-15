@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Form, Button, Card } from 'react-bootstrap';
 import { useAuth } from '../contexts/Auth-Context';
 
@@ -9,11 +9,22 @@ const passwordRef = useRef();
 const passwordConfirmRef = useRef();
 //WHY is signup destructured
 const { signUp } = useAuth();
+const [ error, setError ] = useState();
+
 
 //WHY isnt this an arrow function?
-function handleSubmit (e)  {
+async function handleSubmit (e)  {
     e.preventDefault();
-    signUp(emailRef.current.value, passwordRef.current.value)
+    if (passwordRef.current.value !== passwordConfirmRef.current.value){
+        return setError('Passwords do not match')
+    }
+    try {
+        setError('');
+        await signUp(emailRef.current.value, passwordRef.current.value);
+    } catch {
+        setError('Failed to create an account')
+    }
+
 }
 
     return (
