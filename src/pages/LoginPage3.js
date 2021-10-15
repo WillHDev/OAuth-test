@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../contexts/Auth-Context';
-
+import { Link } from 'react-router-dom';
 export default function LoginPage3() {
     
 const emailRef =  useRef();
 const passwordRef = useRef();
-const passwordConfirmRef = useRef();
+
 //WHY is signup destructured
 //currenUser used for testing from useAuth
-const { signUp} = useAuth();
+const { login } = useAuth();
 const [ error, setError ] = useState();
 const [ loading, setLoading ] = useState(false);
 
@@ -17,15 +17,13 @@ const [ loading, setLoading ] = useState(false);
 //WHY isnt this an arrow function?
 async function handleSubmit (e)  {
     e.preventDefault();
-    if (passwordRef.current.value !== passwordConfirmRef.current.value){
-        return setError('Passwords do not match')
-    }
+   
     try {
         setError('');
         setLoading(true);
-        await signUp(emailRef.current.value, passwordRef.current.value);
+        await login(emailRef.current.value, passwordRef.current.value);
     } catch {
-        setError('Failed to create an account')
+        setError('Failed to log in')
     }
 setLoading(false);
 }
@@ -47,17 +45,13 @@ setLoading(false);
                                 <Form.Control type="password" ref= {passwordRef} required />
                             </Form.Label>
                         </Form.Group>
-                        <Form.Group id="password-confirm">
-                            <Form.Label>Password Confirmation
-                                <Form.Control type="password" ref= {passwordConfirmRef} required />
-                            </Form.Label>
-                        </Form.Group>
-                        <Button  type="submit" disabled={loading}>Sign Up</Button>
+                      
+                        <Button  type="submit" disabled={loading}>Log In</Button>
                     </Form>
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account?
+                Need an account? <Link to="/signup" >Sign Up</Link>
             </div>
         </>
     )

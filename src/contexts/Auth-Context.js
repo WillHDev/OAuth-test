@@ -16,10 +16,20 @@ export  function AuthProvider( { children } ) {
 const [ currentUser, setCurrentUser ] = useState();
 const [ loading, setLoading ] = useState(true);
 
-function signup(email, password) {
+
+//Can do this without firebase, just change these
+//two functions to log to the server instead
+function signUp(email, password) {
     //will return a promise that we can use inside Signup component
     //to show error message or rd user to correct page
     return auth.createUserWithEmailAndPassword(email, password);
+
+}
+
+function logIn(email, password) {
+    //will return a promise that we can use inside Signup component
+    //to show error message or rd user to correct page
+    return auth.signInWithEmailAndPassword(email, password);
 
 }
 
@@ -42,7 +52,8 @@ return unsubscribe;
 
     const value = {
         currentUser,
-        signup
+        signUp, 
+         logIn
     }
     return (
     <AuthContext.Provider value={value}>

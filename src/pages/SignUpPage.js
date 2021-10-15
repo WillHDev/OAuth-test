@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap';
-import { useAuth } from '../contexts/Auth-Context';
-
+import { useAuth, signUp } from '../contexts/Auth-Context';
+import { Link } from 'react-router-dom';
 export default function SignUpPage() {
     
 const emailRef =  useRef();
@@ -17,6 +17,7 @@ const [ loading, setLoading ] = useState(false);
 //WHY isnt this an arrow function?
 async function handleSubmit (e)  {
     e.preventDefault();
+    //console.log(e);
     if (passwordRef.current.value !== passwordConfirmRef.current.value){
         return setError('Passwords do not match')
     }
@@ -24,8 +25,9 @@ async function handleSubmit (e)  {
         setError('');
         setLoading(true);
         await signUp(emailRef.current.value, passwordRef.current.value);
-    } catch {
-        setError('Failed to create an account')
+    } catch(error) {
+        console.log(error);
+        setError('Failed to create an account');
     }
 setLoading(false);
 }
@@ -43,7 +45,7 @@ setLoading(false);
                             </Form.Label>
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Email
+                            <Form.Label>Password
                                 <Form.Control type="password" ref= {passwordRef} required />
                             </Form.Label>
                         </Form.Group>
@@ -57,7 +59,7 @@ setLoading(false);
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an account?
+                Already have an account? <Link to="/login">Log In</Link>
             </div>
         </>
     )
